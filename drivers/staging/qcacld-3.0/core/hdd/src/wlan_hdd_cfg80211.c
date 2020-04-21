@@ -21429,9 +21429,10 @@ static int wlan_hdd_cfg80211_connect(struct wiphy *wiphy,
  * Return: string conversion of reason code, if match found;
  *         "Unknown" otherwise.
  */
-#ifdef WLAN_DEBUG
+
 static const char *hdd_ieee80211_reason_code_to_str(uint16_t reason)
 {
+#ifdef WLAN_DEBUG
 	switch (reason) {
 	CASE_RETURN_STRING(WLAN_REASON_UNSPECIFIED);
 	CASE_RETURN_STRING(WLAN_REASON_PREV_AUTH_NOT_VALID);
@@ -21483,8 +21484,9 @@ static const char *hdd_ieee80211_reason_code_to_str(uint16_t reason)
 	default:
 		return "Unknown";
 	}
-}
 #endif
+		return "";
+	}
 
 /**
  * hdd_qca_reason_to_str() - return string conversion of qca reason code
@@ -21495,10 +21497,11 @@ static const char *hdd_ieee80211_reason_code_to_str(uint16_t reason)
  * Return: string conversion of reason code, if match found;
  *         "Unknown" otherwise.
  */
-#ifdef WLAN_DEBUG
+
 static const char *
 hdd_qca_reason_to_str(enum qca_disconnect_reason_codes reason)
 {
+#ifdef WLAN_DEBUG
 	switch (reason) {
 	CASE_RETURN_STRING(QCA_DISCONNECT_REASON_INTERNAL_ROAM_FAILURE);
 	CASE_RETURN_STRING(QCA_DISCONNECT_REASON_EXTERNAL_ROAM_FAILURE);
@@ -21520,9 +21523,9 @@ hdd_qca_reason_to_str(enum qca_disconnect_reason_codes reason)
 		return "";
 	default:
 		return "Unknown";
-	}
-}
 #endif
+	return "";
+}
 
 /**
  * wlan_hdd_sir_mac_to_qca_reason() - Convert to qca internal disconnect reason
@@ -24818,3 +24821,4 @@ static struct cfg80211_ops wlan_hdd_cfg80211_ops = {
 #endif
 
 };
+
