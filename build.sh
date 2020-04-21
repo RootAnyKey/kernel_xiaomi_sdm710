@@ -7,5 +7,5 @@ make O=out sirius_defconfig
 make -j$(nproc --all) O=out \
 ARCH=arm64 \
 SUBARCH=arm64 \
-CC=/home/mo9/tc/aosp-clang/bin/clang \
+CC=/home/mo9/tc/android_prebuilts_clang_host_linux-x86_clang-6364210/bin/clang \
 CLANG_TRIPLE=aarch64-linux-gnu-
