@@ -1,3 +1,5 @@
+make mrproper
+rm -rf out
 export ARCH=arm64
 export SUBARCH=arm64
 CLANG_TRIPLE=aarch64-linux-gnu-
