@@ -1477,6 +1477,7 @@ static void android_work(struct work_struct *data)
 		kobject_uevent_env(&gi->dev->kobj,
 					KOBJ_CHANGE, configured);
 		pr_info("%s: sent uevent %s\n", __func__, configured[0]);
+		smblib_cancel_recheck();
 		uevent_sent = true;
 	}
 

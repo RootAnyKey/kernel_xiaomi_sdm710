@@ -982,15 +982,12 @@ static int set_config(struct usb_composite_dev *cdev,
 		}
 	}
 
-<<<<<<< HEAD
-=======
 	/* when we return, be sure our power usage is valid */
 	power = c->MaxPower ? c->MaxPower : CONFIG_USB_GADGET_VBUS_DRAW;
 	if (gadget->speed < USB_SPEED_SUPER)
 		power = min(power, 500U);
 	else
 		power = min(power, 900U);
->>>>>>> 1abd185a898d1e6cef9a9e0a1ab8b0e2d9041ed4
 done:
 	usb_gadget_vbus_draw(gadget, power);
 	if (result >= 0 && cdev->delayed_status)
@@ -2492,10 +2489,7 @@ void composite_resume(struct usb_gadget *gadget)
 {
 	struct usb_composite_dev	*cdev = get_gadget_data(gadget);
 	struct usb_function		*f;
-<<<<<<< HEAD
-=======
 	unsigned			maxpower;
->>>>>>> 1abd185a898d1e6cef9a9e0a1ab8b0e2d9041ed4
 	int				ret;
 	unsigned long			flags;
 
@@ -2537,9 +2531,6 @@ void composite_resume(struct usb_gadget *gadget)
 				f->resume(f);
 		}
 
-<<<<<<< HEAD
-		usb_gadget_vbus_draw(gadget, USB_VBUS_DRAW(gadget->speed));
-=======
 		maxpower = cdev->config->MaxPower ?
 			cdev->config->MaxPower : CONFIG_USB_GADGET_VBUS_DRAW;
 		if (gadget->speed < USB_SPEED_SUPER)
@@ -2548,7 +2539,7 @@ void composite_resume(struct usb_gadget *gadget)
 			maxpower = min(maxpower, 900U);
 
 		usb_gadget_vbus_draw(gadget, maxpower);
->>>>>>> 1abd185a898d1e6cef9a9e0a1ab8b0e2d9041ed4
+
 	}
 
 	spin_unlock_irqrestore(&cdev->lock, flags);
